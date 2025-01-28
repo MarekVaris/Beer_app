@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -31,8 +33,9 @@
                     android:layout_marginEnd="16dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/app_name"
+                    android:onClick="ShowTable"
                     app:srcCompat="@drawable/menu"
-                    android:onClick="ShowTable" />
+                    tools:ignore="DuplicateSpeakableTextCheck" />
 
                 <TextView
                     android:id="@+id/toolbar_title"
@@ -41,7 +44,8 @@
                     android:layout_gravity="center"
                     android:text="@string/beer_map"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
 
                 <ImageView
                     android:id="@+id/toolbar_icon"
@@ -71,6 +75,7 @@
             android:layout_height="match_parent"
             android:alpha="0"
             android:background="#95000000"
+            android:visibility="gone"
             android:onClick="ShowTable">
 
         </FrameLayout>
