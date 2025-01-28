@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
@@ -32,12 +34,12 @@ class MainActivity : AppCompatActivity() {
         if (navigationView.translationX == 0f) {
             navigationView.animate().translationX(-navigationView.width.toFloat()).setDuration(300).start()
             navigationView_background.animate().alpha(0f).setDuration(300).start()
-            navigationView_background.isClickable = false
+            navigationView_background.isVisible = view.isGone
         }
         else {
             navigationView.animate().translationX(0f).setDuration(300).start()
             navigationView_background.animate().alpha(1f).setDuration(300).start()
-            navigationView_background.isClickable = true
+            navigationView_background.isVisible = true
         }
     }
 

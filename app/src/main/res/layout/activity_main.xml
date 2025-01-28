@@ -70,9 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0"
-            android:clickable="false"
             android:background="#95000000"
-            android:focusable="false"
             android:onClick="ShowTable">
 
         </FrameLayout>
