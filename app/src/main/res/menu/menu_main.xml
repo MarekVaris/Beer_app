@@ -9,12 +9,17 @@
         android:title="Login"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_maps"
         android:orderInCategory="101"
+        android:title="Maps"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="102"
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
         android:id="@+id/media_route_menu_item"
-        android:orderInCategory="102"
-        android:title="Cast" />
+        android:orderInCategory="103"
+        android:title="never" />
 </menu>
