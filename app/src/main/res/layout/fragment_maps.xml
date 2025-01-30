@@ -27,16 +27,22 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_filtr_bottom"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
-        android:translationY="650dp"
+        android:layout_height="match_parent"
+        android:translationY="900dp"
         android:layout_gravity="bottom"
         tools:ignore="VisualLintBottomNav,VisualLintBounds">
 
-        <include
-            android:id="@+id/nav_bottom_include"
-            layout="@layout/nav_bottom"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:background="#232323">
+
+            <include
+                android:id="@+id/nav_bottom_include"
+                layout="@layout/nav_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

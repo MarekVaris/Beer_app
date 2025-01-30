@@ -9,13 +9,8 @@
         android:title="@string/app_name"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_login"
-        android:orderInCategory="101"
-        android:title="@string/login"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_settings"
-        android:orderInCategory="102"
+        android:orderInCategory="101"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>
