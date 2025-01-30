@@ -44,19 +44,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/advent_pro"
                     android:text="@string/beer_map"
-                    android:textSize="20sp"
+                    android:textSize="35sp"
                     android:textStyle="bold"
                     tools:ignore="TextContrastCheck" />
 
-                <ImageView
-                    android:id="@+id/toolbar_icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                <ImageButton
+                    android:id="@+id/account_icon_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="end"
                     android:layout_marginEnd="16dp"
+                    android:backgroundTint="#00FFFFFF"
                     android:contentDescription="@string/app_name"
-                    app:srcCompat="@drawable/ic_beer" />
+                    app:srcCompat="@android:drawable/ic_menu_add" />
 
             </androidx.appcompat.widget.Toolbar>
 

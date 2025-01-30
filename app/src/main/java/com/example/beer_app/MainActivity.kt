@@ -3,6 +3,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
@@ -26,13 +27,13 @@ class MainActivity : AppCompatActivity() {
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val toolbarTitle = findViewById<TextView>(R.id.toolbar_title)
 
+        val account_icon_button = findViewById<ImageButton>(R.id.account_icon_button)
+        account_icon_button.setOnClickListener {
+            navController.navigate(R.id.accountLoginFragment)
+        }
+
         navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.action_login -> {
-                    ShowTable(navigationView)
-                    navController.navigate(R.id.loginFragment)
-                    true
-                }
                 R.id.action_maps -> {
                     ShowTable(navigationView)
                     navController.navigate(R.id.mapsFragment)
@@ -46,6 +47,8 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.loginFragment -> toolbarTitle.text = getString(R.string.login)
                 R.id.mapsFragment -> toolbarTitle.text = getString(R.string.beer_map)
+                R.id.accountLoginFragment -> toolbarTitle.text = getString(R.string.account_login)
+                R.id.signUpFragment -> toolbarTitle.text = getString(R.string.sign_up)
                 else -> toolbarTitle.text = getString(R.string.app_name)
             }
         }
@@ -66,4 +69,5 @@ class MainActivity : AppCompatActivity() {
             navigationViewBackground.isVisible = true
         }
     }
+
 }

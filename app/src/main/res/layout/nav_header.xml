@@ -11,7 +11,8 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:contentDescription="@string/todo"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/kot" />
+
 
     <TextView
         android:layout_width="wrap_content"

@@ -18,18 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class MapsFragment : Fragment() {
 
     private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        val poland = LatLng(51.9194, 19.1451)
+        val poland = LatLng(51.9194, 19.1451)  // Coordinates of Poland
         googleMap.addMarker(MarkerOptions().position(poland).title("Marker in Poland"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(poland))
+
+        val zoomLevel = 6f
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(poland, zoomLevel))
     }
 
     override fun onCreateView(
@@ -39,7 +32,6 @@ class MapsFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_maps, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,14 +44,16 @@ class MapsFragment : Fragment() {
         }
     }
 
-    fun ShowFilter( view: View) {
+    fun ShowFilter(view: View) {
         val navigationViewFiltr = view.findViewById<BottomNavigationView>(R.id.nav_filtr_bottom)
 
-        if (navigationViewFiltr.translationY == 0f) {
+        val screenHeight = resources.displayMetrics.heightPixels
+        val targetTranslationY = (screenHeight * 0.2).toFloat()
+
+        if (navigationViewFiltr.translationY <= targetTranslationY) {
             navigationViewFiltr.animate().translationY(navigationViewFiltr.height.toFloat()).setDuration(300).start()
-        }
-        else {
-            navigationViewFiltr.animate().translationY(0f).setDuration(300).start()
+        } else {
+            navigationViewFiltr.animate().translationY(targetTranslationY).setDuration(300).start()
         }
     }
 }
