@@ -4,22 +4,18 @@
     android:id="@+id/action_menu"
     tools:context="com.example.beer_app.MainActivity">
     <item
-        android:id="@+id/action_login"
+        android:id="@+id/action_maps"
         android:orderInCategory="100"
-        android:title="Login"
+        android:title="@string/app_name"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_maps"
+        android:id="@+id/action_login"
         android:orderInCategory="101"
-        android:title="Maps"
+        android:title="@string/login"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="102"
         android:title="@string/action_settings"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/media_route_menu_item"
-        android:orderInCategory="103"
-        android:title="never" />
 </menu>

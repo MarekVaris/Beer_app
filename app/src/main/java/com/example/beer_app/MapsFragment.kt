@@ -1,14 +1,10 @@
 package com.example.beer_app
-
-import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -16,6 +12,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MapsFragment : Fragment() {
 
@@ -48,6 +46,20 @@ class MapsFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
+        val filtrButton = requireActivity().findViewById<FloatingActionButton>(R.id.filtr_button)
+        filtrButton.setOnClickListener {
+            ShowFilter(view)
+        }
     }
 
+    fun ShowFilter( view: View) {
+        val navigationViewFiltr = view.findViewById<BottomNavigationView>(R.id.nav_filtr_bottom)
+
+        if (navigationViewFiltr.translationY == 0f) {
+            navigationViewFiltr.animate().translationY(navigationViewFiltr.height.toFloat()).setDuration(300).start()
+        }
+        else {
+            navigationViewFiltr.animate().translationY(0f).setDuration(300).start()
+        }
+    }
 }

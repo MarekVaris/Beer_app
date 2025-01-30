@@ -1,7 +1,9 @@
 package com.example.beer_app
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -14,14 +16,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-
         navController = navHostFragment.navController
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        val toolbarTitle = findViewById<TextView>(R.id.toolbar_title)
+
         navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_login -> {
@@ -37,23 +41,29 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.loginFragment -> toolbarTitle.text = getString(R.string.login)
+                R.id.mapsFragment -> toolbarTitle.text = getString(R.string.beer_map)
+                else -> toolbarTitle.text = getString(R.string.app_name)
+            }
+        }
     }
 
     fun ShowTable(view: View) {
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        val navigationView_background = findViewById<FrameLayout>(R.id.nav_view_background)
+        val navigationViewBackground = findViewById<FrameLayout>(R.id.nav_view_background)
 
         if (navigationView.translationX == 0f) {
             navigationView.animate().translationX(-navigationView.width.toFloat()).setDuration(300).start()
-            navigationView_background.animate().alpha(0f).setDuration(300).start()
-            navigationView_background.isVisible = view.isGone
+            navigationViewBackground.animate().alpha(0f).setDuration(300).start()
+            navigationViewBackground.isVisible = view.isGone
         }
         else {
             navigationView.animate().translationX(0f).setDuration(300).start()
-            navigationView_background.animate().alpha(1f).setDuration(300).start()
-            navigationView_background.isVisible = true
+            navigationViewBackground.animate().alpha(1f).setDuration(300).start()
+            navigationViewBackground.isVisible = true
         }
     }
-
-
 }

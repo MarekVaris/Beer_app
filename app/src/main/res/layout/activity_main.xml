@@ -12,7 +12,8 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#232323">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -23,7 +24,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary">
+                android:background="#909CA0"
+                app:subtitleTextColor="#EBF1E6">
 
                 <ImageButton
                     android:id="@+id/nav_button"
@@ -80,14 +82,16 @@
 
         </FrameLayout>
 
+
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="215dp"
             android:layout_height="match_parent"
-            android:translationX="-215dp"
             android:alpha="1"
+            android:background="#8F9B9F"
+            android:translationX="-215dp"
             app:headerLayout="@layout/nav_header"
-            app:menu="@menu/menu_main" >
+            app:menu="@menu/menu_main">
 
         </com.google.android.material.navigation.NavigationView>
 
