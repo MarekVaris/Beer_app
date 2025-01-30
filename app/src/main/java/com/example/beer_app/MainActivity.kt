@@ -1,8 +1,6 @@
 package com.example.beer_app
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
@@ -10,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
-import java.io.Console
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +19,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
         navController = navHostFragment.navController
-
-
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.action_login -> {
+                    ShowTable(navigationView)
+                    navController.navigate(R.id.loginFragment)
+                    true
+                }
+                R.id.action_maps -> {
+                    ShowTable(navigationView)
+                    navController.navigate(R.id.mapsFragment)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun ShowTable(view: View) {
