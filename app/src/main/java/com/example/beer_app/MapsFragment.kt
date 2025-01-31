@@ -13,6 +13,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import android.util.Log
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.io.InputStream
 import java.nio.charset.Charset
 import org.json.JSONObject
@@ -50,7 +51,16 @@ class MapsFragment : Fragment() {
     }
 
     fun ShowFilter(view: View) {
-        // Implementacja przycisku filtrów (jeśli potrzebna)
+        val navigationViewFiltr = view.findViewById<BottomNavigationView>(R.id.nav_filtr_bottom)
+
+        val screenHeight = resources.displayMetrics.heightPixels
+        val targetTranslationY = (screenHeight * 0.2).toFloat()
+
+        if (navigationViewFiltr.translationY <= targetTranslationY) {
+            navigationViewFiltr.animate().translationY(navigationViewFiltr.height.toFloat()).setDuration(300).start()
+        } else {
+            navigationViewFiltr.animate().translationY(targetTranslationY).setDuration(300).start()
+        }
     }
 
     private fun loadGeoJsonFromAsset() {
