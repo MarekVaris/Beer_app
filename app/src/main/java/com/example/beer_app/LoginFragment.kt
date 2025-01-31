@@ -39,6 +39,7 @@ class LoginFragment : Fragment() {
             if (validation(username, password)) {
                 saveLoggedInUser(username)
                 Toast.makeText(requireContext(), "Login Successful!", Toast.LENGTH_SHORT).show()
+                rootView.findNavController().navigate(R.id.action_loginFragment_to_userInfoFragment)
             }
             else {
                 Toast.makeText(requireContext(), "Invalid username or password!", Toast.LENGTH_SHORT).show()

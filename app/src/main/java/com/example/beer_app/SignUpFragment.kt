@@ -31,6 +31,7 @@ class SignUpFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_sign_up, container, false)
 
+        var sharedPreferences = requireContext().getSharedPreferences("logged_in_user", Context.MODE_PRIVATE)
         val signUpButton = rootView.findViewById<Button>(R.id.signup_button)
         val usernameInput = rootView.findViewById<TextInputEditText>(R.id.username_input)
         val passwordInput = rootView.findViewById<TextInputEditText>(R.id.password_input)
@@ -45,6 +46,7 @@ class SignUpFragment : Fragment() {
 
                 if (UserStorage.addUser(requireContext(), newUser)) {
                     Toast.makeText(requireContext(), "User Registered Successfully!", Toast.LENGTH_SHORT).show()
+                    rootView.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
                 }
                 else {
                     Toast.makeText(requireContext(), "Username already exists!", Toast.LENGTH_SHORT).show()
@@ -55,9 +57,12 @@ class SignUpFragment : Fragment() {
             }
         }
 
+
+
         goToLoginButton?.setOnClickListener {
             rootView.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
         }
+
 
         return rootView
     }

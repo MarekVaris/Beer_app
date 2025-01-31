@@ -1,15 +1,18 @@
 package com.example.beer_app
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
@@ -36,12 +39,23 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val toolbarTitle = findViewById<TextView>(R.id.toolbar_title)
-
         val account_icon_button = findViewById<ImageButton>(R.id.account_icon_button)
+        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+
+        if (sharedPreferences.contains("logged_in_user")) {
+            account_icon_button.setImageResource(R.drawable.kot)
+        }
+
         account_icon_button.setOnClickListener {
-            navController.navigate(R.id.accountLoginFragment)
+            if (sharedPreferences.contains("logged_in_user")){
+                navController.navigate(R.id.userInfoFragment)
+            }
+            else{
+                navController.navigate(R.id.accountLoginFragment)
+            }
         }
 
         navigationView.setNavigationItemSelectedListener { item ->
@@ -61,6 +75,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.mapsFragment -> toolbarTitle.text = getString(R.string.beer_map)
                 R.id.accountLoginFragment -> toolbarTitle.text = getString(R.string.account_login)
                 R.id.signUpFragment -> toolbarTitle.text = getString(R.string.sign_up)
+                R.id.userInfoFragment -> toolbarTitle.text = getString(R.string.user_info)
                 else -> toolbarTitle.text = getString(R.string.app_name)
             }
         }
