@@ -31,7 +31,8 @@
                 android:id="@+id/username_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="#E9E9E9" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,7 +48,8 @@
                 android:id="@+id/password_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="#E9E9E9"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

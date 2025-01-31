@@ -37,8 +37,8 @@ class LoginFragment : Fragment() {
             val password = passwordInput.text.toString()
 
             if (validation(username, password)) {
+                saveLoggedInUser(username)
                 Toast.makeText(requireContext(), "Login Successful!", Toast.LENGTH_SHORT).show()
-
             }
             else {
                 Toast.makeText(requireContext(), "Invalid username or password!", Toast.LENGTH_SHORT).show()
@@ -66,6 +66,14 @@ class LoginFragment : Fragment() {
         rootLayout.setOnTouchListener { _, _ ->
             hideKeyboard()
             true
+        }
+    }
+
+    private fun saveLoggedInUser(username: String) {
+        val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("logged_in_user", username)
+            apply()
         }
     }
 
