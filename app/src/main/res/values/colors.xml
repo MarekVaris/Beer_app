@@ -6,5 +6,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <!-- Status bar color -->
-    <color name="status_bar_color">#909CA0</color>  <!-- Set the color you want for the status bar -->
+    <color name="status_bar_color">#FCE10D</color>  <!-- Set the color you want for the status bar -->
 </resources>

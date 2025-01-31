@@ -21,7 +21,7 @@
         android:layout_margin="20dp"
         android:contentDescription="@string/todo"
         android:src="@drawable/ic_filter"
-        app:backgroundTint="#6BFD81" />
+        app:backgroundTint="#F1A81F" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
