@@ -37,11 +37,6 @@ object UserStorage {
         writer.close()
     }
 
-    fun isUserExists(context: Context, username: String): Boolean {
-        val users = loadUsers(context)
-        return users.any { it.username == username }
-    }
-
     fun addUser(context: Context, newUser: User): Boolean {
         val users = loadUsers(context)
 
